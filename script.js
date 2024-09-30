@@ -257,7 +257,7 @@ caminho.reverse();
 caminho.forEach(no => celulas[no].classList.add('path'));
 
 // Calcular o custo como o número de passos (nós no caminho)
-const custo = caminho.length - 1; // Subtrai 1 porque o caminho inclui o nó inicial
+const custo = caminho.length - 1;
 document.getElementById('output').textContent = `Caminho encontrado com custo de ${custo} passos.`;
 }
 
