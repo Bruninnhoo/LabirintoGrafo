@@ -13,12 +13,13 @@ const labirinto = [
 ];
 
 
-//
+
 const containerLabirinto = document.getElementById('maze');
 const celulas = [];
 let noInicio = null;
 let noObjetivo = null;
 
+//Criar labirinto
 for (let i = 0; i < labirinto.length; i++) {
     for (let j = 0; j < labirinto[i].length; j++) {
         const celula = document.createElement('div');
@@ -35,7 +36,7 @@ for (let i = 0; i < labirinto.length; i++) {
     }
 }
 
-
+//Escolher no
 function selecionarNo(i, j) {
     const index = i * labirinto[0].length + j;
     if (labirinto[i][j] === 1) {
@@ -73,6 +74,7 @@ document.getElementById('searchMethod').addEventListener('change', function() {
     }
 });
 
+//Iniciar Busca
 function iniciarBusca() {
     if (noInicio === null || noObjetivo === null) {
         alert('Selecione os estados inicial e objetivo.');
@@ -106,7 +108,7 @@ function iniciarBusca() {
             break;
     }
 }
-
+//Amplitude
 function bfs() {
     const fila = [noInicio];
     const visitados = new Set();
@@ -129,7 +131,7 @@ function bfs() {
         }
     }
 }
-
+//Profundidade
 function dfs() {
     const pilha = [noInicio];
     const visitados = new Set();
@@ -152,7 +154,7 @@ function dfs() {
         }
     }
 }
-
+//Profundidade Limitada
 function dls(limite) {
     const visitados = new Set();
     const pai = {};
@@ -177,6 +179,7 @@ function dlsRecursiva(no, limite, visitados, pai) {
     return false;
 }
 
+//Aprofundamento iterativo
 function ids() {
     let profundidade = 0;
     const pai = {};
@@ -222,6 +225,7 @@ function passoBidirecional(fila, visitados, visitadosOutroLado, pai, paiOutroLad
     return false;
 }
 
+//Verificar vizinhos
 function obterVizinhos(no) {
     const vizinhos = [];
     const linha = Math.floor(no / labirinto[0].length);
@@ -234,6 +238,7 @@ function obterVizinhos(no) {
 
     return vizinhos;
 }
+
 
 function exibirCaminho(pai, no, paiOutroLado = null) {
 let caminho = [no];
